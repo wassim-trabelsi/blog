@@ -1,0 +1,1000 @@
+/* ================================================
+   COOL MODERN TECH THEME
+   Deep navy + ice blue + crisp white
+   Analytical, focused, modern
+   ================================================ */
+
+/* Import modern fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Modern tech color palette */
+  --slate-navy: #1E293B;
+  --slate-darker: #0F172A;
+  --slate-dark: #334155;
+  --slate-medium: #475569;
+  --slate-light: #64748B;
+  --sky-blue: #38BDF8;
+  --sky-light: #7DD3FC;
+  --sky-lighter: #BAE6FD;
+  --sky-pale: #E0F2FE;
+  --ice-white: #F8FAFC;
+  --pure-white: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  
+  /* Vibrant accents */
+  --accent-cyan: #06B6D4;
+  --accent-blue: #3B82F6;
+  --accent-indigo: #6366F1;
+  
+  /* Shadows - crisp and modern */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 10px 40px rgba(15, 23, 42, 0.15);
+  --shadow-glow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+/* Light mode - crisp and clean */
+[data-md-color-scheme="default"] {
+  --md-default-fg-color: var(--text-primary);
+  --md-default-fg-color--light: var(--text-secondary);
+  --md-default-fg-color--lighter: var(--slate-light);
+  --md-default-bg-color: var(--ice-white);
+  --md-code-bg-color: var(--pure-white);
+  
+  /* Primary colors - slate navy */
+  --md-primary-fg-color: var(--slate-navy);
+  --md-primary-fg-color--light: var(--slate-medium);
+  --md-primary-fg-color--dark: var(--slate-darker);
+  --md-primary-bg-color: var(--pure-white);
+  
+  /* Accent colors - sky blue */
+  --md-accent-fg-color: var(--sky-blue);
+  --md-accent-fg-color--transparent: rgba(56, 189, 248, 0.1);
+  --md-accent-bg-color: var(--sky-pale);
+  
+  /* Typography colors */
+  --md-typeset-a-color: var(--accent-blue);
+  --md-typeset-mark-color: rgba(56, 189, 248, 0.25);
+  
+  /* Code colors */
+  --md-code-fg-color: var(--slate-darker);
+  --md-code-hl-color: rgba(56, 189, 248, 0.15);
+  --md-code-hl-number-color: var(--accent-cyan);
+  --md-code-hl-keyword-color: var(--accent-indigo);
+}
+
+/* Dark mode - sleek and professional */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #0F172A;
+  --md-default-fg-color: #E2E8F0;
+  --md-default-fg-color--light: #94A3B8;
+  --md-code-bg-color: #1E293B;
+  
+  /* Primary colors - lighter for dark mode */
+  --md-primary-fg-color: #475569;
+  --md-primary-fg-color--light: #64748B;
+  --md-primary-fg-color--dark: #334155;
+  --md-primary-bg-color: #1E293B;
+  
+  /* Accent colors - vibrant blue for dark */
+  --md-accent-fg-color: #38BDF8;
+  --md-accent-fg-color--transparent: rgba(56, 189, 248, 0.15);
+  
+  /* Typography */
+  --md-typeset-a-color: #7DD3FC;
+  --md-typeset-mark-color: rgba(56, 189, 248, 0.3);
+  
+  /* Elevated surfaces */
+  --md-default-bg-color--light: #1E293B;
+  --md-default-bg-color--lighter: #334155;
+}
+
+/* ================================================
+   HEADER - Sleek and modern
+   ================================================ */
+
+.md-header {
+  background: linear-gradient(135deg, var(--slate-darker) 0%, var(--slate-navy) 100%);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.md-header__title {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: -0.01em;
+  color: var(--pure-white);
+}
+
+/* Logo styling - circular */
+.md-logo img,
+.md-logo svg {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+}
+
+/* Ensure logo is visible and circular in both modes */
+[data-md-color-scheme="default"] .md-logo img,
+[data-md-color-scheme="slate"] .md-logo img,
+[data-md-color-scheme="default"] .md-logo svg,
+[data-md-color-scheme="slate"] .md-logo svg {
+  border-radius: 50%;
+  filter: none !important;
+}
+
+.md-header__button {
+  color: var(--sky-light);
+}
+
+.md-header__button:hover {
+  color: var(--sky-blue);
+}
+
+/* GitHub source icon - white in both modes */
+.md-header__source {
+  color: white !important;
+}
+
+.md-source {
+  color: white !important;
+}
+
+.md-source__icon {
+  color: white !important;
+}
+
+.md-source__icon svg {
+  fill: white !important;
+  color: white !important;
+}
+
+/* Ensure visibility in both color schemes */
+[data-md-color-scheme="default"] .md-header__source,
+[data-md-color-scheme="slate"] .md-header__source,
+[data-md-color-scheme="default"] .md-source,
+[data-md-color-scheme="slate"] .md-source,
+[data-md-color-scheme="default"] .md-source__icon,
+[data-md-color-scheme="slate"] .md-source__icon,
+[data-md-color-scheme="default"] .md-source__icon svg,
+[data-md-color-scheme="slate"] .md-source__icon svg {
+  color: white !important;
+  fill: white !important;
+}
+
+/* Tabs - integrated into header */
+.md-tabs {
+  background: linear-gradient(135deg, var(--slate-navy) 0%, var(--slate-dark) 100%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.md-tabs__item {
+  color: var(--sky-lighter);
+}
+
+.md-tabs__item--active {
+  color: white !important;
+}
+
+.md-tabs__item--active .md-tabs__link {
+  color: white !important;
+}
+
+.md-tabs__link {
+  color: var(--sky-lighter);
+  font-weight: 500;
+  font-size: 0.64rem;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.md-tabs__link:hover {
+  color: var(--sky-blue);
+  opacity: 1;
+}
+
+.md-tabs__link--active {
+  color: white !important;
+  opacity: 1;
+  border-bottom: 2px solid var(--sky-blue);
+  font-weight: 600;
+}
+
+/* Ensure active tab is white in both light and dark modes */
+[data-md-color-scheme="default"] .md-tabs__link--active,
+[data-md-color-scheme="slate"] .md-tabs__link--active,
+[data-md-color-scheme="default"] .md-tabs__item--active,
+[data-md-color-scheme="slate"] .md-tabs__item--active,
+[data-md-color-scheme="default"] .md-tabs__item--active .md-tabs__link,
+[data-md-color-scheme="slate"] .md-tabs__item--active .md-tabs__link {
+  color: white !important;
+}
+
+/* ================================================
+   MAIN CONTENT - Blog-focused layout
+   ================================================ */
+
+.md-main {
+  background: var(--md-default-bg-color);
+}
+
+.md-content {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Content container - clean card design */
+.md-content__inner {
+  padding: 1.2rem 1.6rem;
+  margin: 0.8rem 0;
+}
+
+/* Blog-style content area */
+article.md-content__inner {
+  background: var(--md-primary-bg-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(56, 189, 248, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Ensure dark mode content has dark background */
+[data-md-color-scheme="slate"] article.md-content__inner,
+[data-md-color-scheme="slate"] .md-content__inner {
+  background: var(--md-primary-bg-color);
+}
+
+article.md-content__inner:hover {
+  box-shadow: var(--shadow-glow), var(--shadow-lg);
+  border-color: rgba(56, 189, 248, 0.15);
+}
+
+/* ================================================
+   TYPOGRAPHY - Clean and readable
+   ================================================ */
+
+.md-typeset {
+  font-size: 0.76rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color);
+  font-weight: 400;
+}
+
+.md-typeset h1 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: 1.12rem;
+  color: var(--md-primary-fg-color--dark);
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--slate-darker), var(--slate-navy));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  background: linear-gradient(135deg, var(--sky-light), var(--pure-white));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.md-typeset h2 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--md-primary-fg-color);
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+  border-left: 2px solid var(--sky-blue);
+  padding-left: 0.55rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h2 {
+  color: var(--sky-light);
+  border-left-color: var(--sky-blue);
+}
+
+.md-typeset h3 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 0.76rem;
+  color: var(--md-primary-fg-color--light);
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h3 {
+  color: var(--sky-lighter);
+}
+
+.md-typeset h4 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  color: var(--md-default-fg-color);
+}
+
+/* Paragraph spacing */
+.md-typeset p {
+  margin-bottom: 0.65rem;
+}
+
+/* Lead paragraph */
+.md-typeset > p:first-of-type {
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 0.8rem;
+}
+
+/* ================================================
+   LINKS - Vibrant and clear
+   ================================================ */
+
+.md-typeset a {
+  color: var(--md-typeset-a-color);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--sky-blue);
+}
+
+.md-typeset a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sky-blue), var(--accent-cyan));
+  transition: width 0.3s ease;
+}
+
+.md-typeset a:hover::after {
+  width: 100%;
+}
+
+/* External links indicator */
+.md-typeset a[href^="http"]::before {
+  content: "↗";
+  font-size: 0.8em;
+  margin-right: 0.2em;
+  opacity: 0.6;
+}
+
+/* ================================================
+   BUTTONS - Modern and clickable
+   ================================================ */
+
+.md-button {
+  background: linear-gradient(135deg, var(--sky-blue), var(--accent-cyan));
+  color: white;
+  padding: 0.32rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  border: none;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-size: 0.64rem;
+}
+
+.md-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md), 0 0 20px rgba(56, 189, 248, 0.4);
+  color: white;
+}
+
+.md-button--primary {
+  background: linear-gradient(135deg, var(--slate-navy), var(--slate-dark));
+}
+
+.md-button--primary:hover {
+  background: linear-gradient(135deg, var(--slate-dark), var(--slate-navy));
+  box-shadow: var(--shadow-md), 0 0 20px rgba(30, 41, 59, 0.3);
+}
+
+/* Dark mode primary button - brighter for contrast */
+[data-md-color-scheme="slate"] .md-button--primary {
+  background: linear-gradient(135deg, var(--sky-blue), var(--accent-cyan));
+  color: white;
+}
+
+[data-md-color-scheme="slate"] .md-button--primary:hover {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--sky-blue));
+  box-shadow: var(--shadow-md), 0 0 20px rgba(56, 189, 248, 0.4);
+}
+
+/* ================================================
+   CODE BLOCKS - Clean and highlighted
+   ================================================ */
+
+.md-typeset code {
+  background-color: var(--md-code-bg-color);
+  color: var(--accent-indigo);
+  padding: 0.16em 0.32em;
+  border-radius: 4px;
+  font-size: 0.68em;
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  font-weight: 500;
+}
+
+.md-typeset pre {
+  background: var(--md-code-bg-color);
+  border-radius: 8px;
+  padding: 0.8rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  overflow-x: auto;
+}
+
+.md-typeset pre > code {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: var(--md-code-fg-color);
+}
+
+/* Code block title */
+.md-typeset pre::before {
+  background: linear-gradient(90deg, var(--sky-blue), var(--accent-cyan));
+  height: 2px;
+  content: "";
+  display: block;
+  margin: -1rem -1rem 1rem;
+  border-radius: 8px 8px 0 0;
+}
+
+/* ================================================
+   NAVIGATION - Clean sidebar
+   ================================================ */
+
+.md-sidebar {
+  background: transparent !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Dark mode sidebar */
+[data-md-color-scheme="slate"] .md-sidebar {
+  background: transparent !important;
+}
+
+.md-sidebar__scrollwrap {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: transparent !important;
+}
+
+.md-sidebar__inner {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+.md-nav {
+  font-size: 0.64rem;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+.md-nav__title {
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+  text-transform: uppercase;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  padding: 0.24rem 0.48rem 0.32rem !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+/* Dark mode nav title color */
+[data-md-color-scheme="slate"] .md-nav__title {
+  color: var(--sky-lighter);
+}
+
+/* Remove ALL top padding/margin from sidebars */
+.md-sidebar--primary,
+.md-sidebar--secondary {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+.md-sidebar--primary .md-sidebar__scrollwrap,
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+.md-sidebar--primary .md-sidebar__inner,
+.md-sidebar--secondary .md-sidebar__inner {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+/* First nav item should have no gap */
+.md-nav--primary,
+.md-nav--secondary {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+.md-nav--primary > .md-nav__list,
+.md-nav--secondary > .md-nav__list {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: transparent !important;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item:first-child,
+.md-nav--secondary > .md-nav__list > .md-nav__item:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.md-nav__link {
+  color: var(--md-default-fg-color--light);
+  border-radius: 5px;
+  padding: 0.32rem 0.56rem;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 0.64rem;
+  background: transparent !important;
+}
+
+.md-nav__link:hover {
+  background: var(--md-accent-fg-color--transparent) !important;
+  color: var(--sky-blue);
+  transform: translateX(4px);
+}
+
+.md-nav__link--active {
+  background: linear-gradient(135deg, var(--md-accent-fg-color--transparent), rgba(56, 189, 248, 0.05)) !important;
+  color: var(--sky-blue);
+  font-weight: 600;
+  border-left: 3px solid var(--sky-blue);
+}
+
+/* Ensure no white backgrounds anywhere in nav */
+.md-nav__item {
+  background: transparent !important;
+}
+
+.md-nav__list {
+  background: transparent !important;
+}
+
+/* ================================================
+   TABLE OF CONTENTS - Sticky and clean
+   ================================================ */
+
+.md-sidebar--secondary {
+  position: sticky;
+  top: 5rem;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+.md-sidebar--secondary .md-sidebar__inner {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+.md-nav--secondary {
+  background: transparent !important;
+}
+
+.md-nav--secondary .md-nav__title {
+  color: var(--slate-navy);
+  font-size: 0.52rem;
+  margin-bottom: 0.16rem;
+  margin-top: 0 !important;
+  padding-top: 0.16rem !important;
+  padding-bottom: 0.24rem;
+  background: transparent !important;
+}
+
+.md-nav--secondary .md-nav__link {
+  font-size: 0.6rem;
+  padding: 0.24rem 0.48rem;
+  background: transparent !important;
+}
+
+.md-nav--secondary .md-nav__link--active {
+  border-left: 3px solid var(--sky-blue);
+  background: var(--md-accent-fg-color--transparent) !important;
+}
+
+/* Dark mode nav title */
+[data-md-color-scheme="slate"] .md-nav--secondary .md-nav__title {
+  color: var(--sky-lighter);
+}
+
+/* ================================================
+   ADMONITIONS - Eye-catching callouts
+   ================================================ */
+
+.md-typeset .admonition {
+  border-radius: 8px;
+  border-left: 3px solid var(--sky-blue);
+  box-shadow: var(--shadow-sm);
+  background: var(--md-accent-fg-color--transparent);
+  padding: 0.64rem 0.96rem;
+  margin: 1.2rem 0;
+  font-size: 0.68rem;
+}
+
+.md-typeset .admonition-title {
+  font-weight: 700;
+  font-size: 0.68rem;
+  color: var(--sky-blue);
+  padding-left: 1.44rem;
+  position: relative;
+}
+
+.md-typeset .admonition-title::before {
+  position: absolute;
+  left: 0;
+  font-size: 1.1em;
+}
+
+/* Different admonition types */
+.md-typeset .admonition.note {
+  border-left-color: var(--accent-blue);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.md-typeset .admonition.tip {
+  border-left-color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.1);
+}
+
+.md-typeset .admonition.warning {
+  border-left-color: #F59E0B;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+/* ================================================
+   SEARCH - Modern and accessible
+   ================================================ */
+
+.md-search__form {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(56, 189, 248, 0.2);
+  box-shadow: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.md-search__form:hover,
+.md-search__form:focus-within {
+  border-color: var(--sky-blue);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.md-search__input {
+  color: white;
+  background-color: transparent;
+  font-size: 0.68rem;
+}
+
+.md-search__input::placeholder {
+  color: var(--sky-lighter);
+  opacity: 0.8;
+  font-size: 0.68rem;
+}
+
+/* Search icon - white in both modes */
+.md-search__icon {
+  color: white !important;
+}
+
+.md-search__icon svg {
+  fill: white !important;
+  color: white !important;
+}
+
+/* Ensure visibility in both color schemes */
+[data-md-color-scheme="default"] .md-search__icon,
+[data-md-color-scheme="slate"] .md-search__icon,
+[data-md-color-scheme="default"] .md-search__icon svg,
+[data-md-color-scheme="slate"] .md-search__icon svg {
+  color: white !important;
+  fill: white !important;
+}
+
+/* ================================================
+   TABLES - Clean and modern
+   ================================================ */
+
+.md-typeset table:not([class]) {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  margin: 2rem 0;
+}
+
+.md-typeset table:not([class]) th {
+  background: linear-gradient(135deg, var(--slate-navy), var(--slate-dark));
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.56rem;
+  letter-spacing: 0.05em;
+  padding: 0.56rem;
+}
+
+.md-typeset table:not([class]) td {
+  border-top: 1px solid rgba(56, 189, 248, 0.1);
+  padding: 0.56rem;
+  font-size: 0.68rem;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: var(--md-accent-fg-color--transparent);
+}
+
+/* ================================================
+   FOOTER - Minimal and clean
+   ================================================ */
+
+.md-footer {
+  background: linear-gradient(135deg, var(--slate-darker), var(--slate-navy));
+  margin-top: 4rem;
+}
+
+.md-footer-meta {
+  background: var(--slate-darker);
+}
+
+.md-footer__link {
+  color: var(--sky-lighter);
+}
+
+.md-footer__link:hover {
+  color: var(--sky-blue);
+}
+
+/* ================================================
+   SOCIAL LINKS - Modern icons
+   ================================================ */
+
+.md-social {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.md-social__link {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--sky-lighter) !important;
+  transition: all 0.3s ease;
+  opacity: 1 !important;
+}
+
+.md-social__link svg {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  fill: currentColor !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.md-social__link:hover {
+  color: var(--sky-blue) !important;
+  transform: translateY(-3px);
+}
+
+/* Ensure icons are visible in footer */
+.md-footer .md-social__link {
+  color: var(--sky-lighter) !important;
+}
+
+.md-footer .md-social__link:hover {
+  color: var(--sky-blue) !important;
+}
+
+/* ================================================
+   BLOG POSTS - Card-based layout
+   ================================================ */
+
+/* Blog post metadata */
+.md-source-file {
+  color: var(--md-default-fg-color--lighter);
+  font-size: 0.6rem;
+  font-weight: 500;
+}
+
+.md-content__button {
+  color: var(--md-default-fg-color--lighter);
+  transition: all 0.2s ease;
+}
+
+.md-content__button:hover {
+  color: var(--sky-blue);
+  transform: scale(1.1);
+}
+
+/* Blog post list */
+.md-typeset article {
+  margin-bottom: 2rem;
+}
+
+/* ================================================
+   TAGS & CATEGORIES - Pill design
+   ================================================ */
+
+.md-tag {
+  background: linear-gradient(135deg, var(--sky-blue), var(--accent-cyan));
+  color: white;
+  border-radius: 14px;
+  padding: 0.24em 0.64em;
+  font-size: 0.56em;
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.md-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+  color: white;
+}
+
+/* ================================================
+   ANIMATIONS - Smooth and modern
+   ================================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.md-content__inner {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Smooth transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================================================
+   SCROLLBAR - Modern style
+   ================================================ */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--md-default-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--sky-blue), var(--accent-cyan));
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+}
+
+/* ================================================
+   GISCUS COMMENTS - Integrated styling
+   ================================================ */
+
+.giscus,
+.giscus-frame {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 2px solid rgba(56, 189, 248, 0.1);
+}
+
+/* ================================================
+   RESPONSIVE DESIGN
+   ================================================ */
+
+@media screen and (max-width: 76.1875em) {
+  .md-content__inner {
+    padding: 0.96rem 1.2rem;
+  }
+  
+  .md-typeset h1 {
+    font-size: 1.04rem;
+  }
+  
+  .md-typeset h2 {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-content__inner {
+    padding: 0.8rem;
+  }
+  
+  .md-typeset {
+    font-size: 0.64rem;
+  }
+  
+  .md-typeset h1 {
+    font-size: 0.96rem;
+  }
+  
+  .md-typeset h2 {
+    font-size: 0.76rem;
+  }
+  
+  article.md-content__inner {
+    border-radius: 8px;
+  }
+}
+
+/* ================================================
+   UTILITY CLASSES
+   ================================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--sky-blue), var(--accent-indigo));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+}

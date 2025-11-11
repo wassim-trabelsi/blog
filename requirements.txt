@@ -1,0 +1,8 @@
+mkdocs-material
+mkdocs-material[imaging]
+mkdocstrings
+mkdocstrings-python
+mkdocs-minify-plugin
+mkdocs-redirects
+pillow
+cairosvg
