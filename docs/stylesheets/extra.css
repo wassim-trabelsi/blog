@@ -1074,3 +1074,23 @@ article.md-content__inner:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
+
+@media screen and (max-width: 76.1875em) {
+  .md-header {
+    position: relative;
+    z-index: 1001 !important;
+  }
+
+  .md-nav__overlay {
+    z-index: 1000 !important;
+  }
+
+  .md-nav__drawer {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    z-index: 1002 !important;
+  }
+}
