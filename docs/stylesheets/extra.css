@@ -1,9 +1,3 @@
-/* ================================================
-   COOL MODERN TECH THEME
-   Deep navy + ice blue + crisp white
-   Analytical, focused, modern
-   ================================================ */
-
 /* Import modern fonts */
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
 
@@ -109,7 +103,7 @@
   letter-spacing: -0.01em;
   color: var(--pure-white);
 }
-
+/* 
 /* Logo styling - circular */
 .md-logo img,
 .md-logo svg {
@@ -232,6 +226,7 @@
 .md-content__inner {
   padding: 1.2rem 1.6rem;
   margin: 0.8rem 0;
+  border-radius: 12px;
 }
 
 /* Blog-style content area */
@@ -263,6 +258,7 @@ article.md-content__inner:hover {
   line-height: 1.6;
   color: var(--md-default-fg-color);
   font-weight: 400;
+  border-radius: 12px;
 }
 
 .md-typeset h1 {
@@ -459,136 +455,6 @@ article.md-content__inner:hover {
   margin: -1rem -1rem 1rem;
   border-radius: 8px 8px 0 0;
 }
-
-/* ================================================
-   NAVIGATION - Clean sidebar
-   ================================================ */
-
-.md-sidebar {
-  background: transparent !important;
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-/* Dark mode sidebar */
-[data-md-color-scheme="slate"] .md-sidebar {
-  background: transparent !important;
-}
-
-.md-sidebar__scrollwrap {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  background: transparent !important;
-}
-
-.md-sidebar__inner {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  background: transparent !important;
-}
-
-.md-nav {
-  font-size: 0.64rem;
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  background: transparent !important;
-}
-
-.md-nav__title {
-  font-weight: 700;
-  color: var(--md-primary-fg-color);
-  text-transform: uppercase;
-  font-size: 0.52rem;
-  letter-spacing: 0.1em;
-  padding: 0.24rem 0.48rem 0.32rem !important;
-  margin-top: 0 !important;
-  background: transparent !important;
-}
-
-/* Dark mode nav title color */
-[data-md-color-scheme="slate"] .md-nav__title {
-  color: var(--sky-lighter);
-}
-
-/* Remove ALL top padding/margin from sidebars */
-.md-sidebar--primary,
-.md-sidebar--secondary {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  background: transparent !important;
-}
-
-.md-sidebar--primary .md-sidebar__scrollwrap,
-.md-sidebar--secondary .md-sidebar__scrollwrap {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  background: transparent !important;
-}
-
-.md-sidebar--primary .md-sidebar__inner,
-.md-sidebar--secondary .md-sidebar__inner {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  background: transparent !important;
-}
-
-/* First nav item should have no gap */
-.md-nav--primary,
-.md-nav--secondary {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  background: transparent !important;
-}
-
-.md-nav--primary > .md-nav__list,
-.md-nav--secondary > .md-nav__list {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  background: transparent !important;
-}
-
-.md-nav--primary > .md-nav__list > .md-nav__item:first-child,
-.md-nav--secondary > .md-nav__list > .md-nav__item:first-child {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-.md-nav__link {
-  color: var(--md-default-fg-color--light);
-  border-radius: 5px;
-  padding: 0.32rem 0.56rem;
-  transition: all 0.2s ease;
-  font-weight: 500;
-  font-size: 0.64rem;
-  background: transparent !important;
-}
-
-.md-nav__link:hover {
-  background: var(--md-accent-fg-color--transparent) !important;
-  color: var(--sky-blue);
-  transform: translateX(4px);
-}
-
-.md-nav__link--active {
-  background: linear-gradient(
-    135deg,
-    var(--md-accent-fg-color--transparent),
-    rgba(56, 189, 248, 0.05)
-  ) !important;
-  color: var(--sky-blue);
-  font-weight: 600;
-  border-left: 3px solid var(--sky-blue);
-}
-
-/* Ensure no white backgrounds anywhere in nav */
-.md-nav__item {
-  background: transparent !important;
-}
-
-.md-nav__list {
-  background: transparent !important;
-}
-
 /* ================================================
    TABLE OF CONTENTS - Sticky and clean
    ================================================ */
@@ -929,129 +795,6 @@ article.md-content__inner:hover {
 }
 
 /* ================================================
-   GISCUS COMMENTS - Integrated styling
-   ================================================ */
-
-.giscus,
-.giscus-frame {
-  margin-top: 3rem;
-  padding-top: 3rem;
-  border-top: 2px solid rgba(56, 189, 248, 0.1);
-}
-
-/* ================================================
-   RESPONSIVE DESIGN
-   ================================================ */
-
-@media screen and (max-width: 76.1875em) {
-  /* Mobile header - make solid and opaque */
-  .md-header {
-    background: linear-gradient(135deg, var(--slate-darker) 0%, var(--slate-navy) 100%) !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    opacity: 1 !important;
-    z-index: 5;
-  }
-
-  /* Mobile drawer sidebar - make solid and clickable */
-  .md-nav__drawer {
-    background: var(--md-primary-bg-color) !important;
-    box-shadow: var(--shadow-lg) !important;
-    z-index: 6 !important;
-  }
-
-  /* Ensure drawer content is solid */
-  .md-nav__drawer .md-sidebar {
-    background: var(--md-primary-bg-color) !important;
-  }
-
-  .md-nav__drawer .md-sidebar__scrollwrap {
-    background: var(--md-primary-bg-color) !important;
-  }
-
-  .md-nav__drawer .md-sidebar__inner {
-    background: var(--md-primary-bg-color) !important;
-  }
-
-  .md-nav__drawer .md-nav {
-    background: var(--md-primary-bg-color) !important;
-  }
-
-  .md-nav__drawer .md-nav__list {
-    background: var(--md-primary-bg-color) !important;
-  }
-
-  /* Dark mode mobile drawer */
-  [data-md-color-scheme="slate"] .md-nav__drawer {
-    background: var(--md-primary-bg-color) !important;
-  }
-
-  [data-md-color-scheme="slate"] .md-nav__drawer .md-sidebar,
-  [data-md-color-scheme="slate"] .md-nav__drawer .md-sidebar__scrollwrap,
-  [data-md-color-scheme="slate"] .md-nav__drawer .md-sidebar__inner,
-  [data-md-color-scheme="slate"] .md-nav__drawer .md-nav,
-  [data-md-color-scheme="slate"] .md-nav__drawer .md-nav__list {
-    background: var(--md-primary-bg-color) !important;
-  }
-
-  /* Ensure drawer overlay is clickable */
-  .md-nav__overlay {
-    background: rgba(0, 0, 0, 0.5) !important;
-    z-index: 5 !important;
-  }
-
-  .md-content__inner {
-    padding: 0.96rem 1.2rem;
-  }
-
-  .md-typeset h1 {
-    font-size: 1.04rem;
-  }
-
-  .md-typeset h2 {
-    font-size: 0.8rem;
-  }
-}
-
-@media screen and (max-width: 44.9375em) {
-  /* Extra small mobile - ensure header is solid */
-  .md-header {
-    background: linear-gradient(135deg, var(--slate-darker) 0%, var(--slate-navy) 100%) !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  /* Ensure drawer is solid on small screens */
-  .md-nav__drawer {
-    background: var(--md-primary-bg-color) !important;
-  }
-
-  [data-md-color-scheme="slate"] .md-nav__drawer {
-    background: var(--md-primary-bg-color) !important;
-  }
-
-  .md-content__inner {
-    padding: 0.8rem;
-  }
-
-  .md-typeset {
-    font-size: 0.64rem;
-  }
-
-  .md-typeset h1 {
-    font-size: 0.96rem;
-  }
-
-  .md-typeset h2 {
-    font-size: 0.76rem;
-  }
-
-  article.md-content__inner {
-    border-radius: 8px;
-  }
-}
-
-/* ================================================
    UTILITY CLASSES
    ================================================ */
 
@@ -1073,43 +816,4 @@ article.md-content__inner:hover {
 .card-hover:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg), var(--shadow-glow);
-}
-
-@media screen and (max-width: 768px) {  /* ~ 48em roughly mobile */
-  /* Make header less interfering */
-  .md-header {
-    position: relative !important;
-    z-index: 10 !important;               /* low value */
-    backdrop-filter: none !important;     /* disable the blur effect on mobile */
-    -webkit-backdrop-filter: none !important;
-  }
-
-  /* Drawer overlay */
-  .md-nav__overlay {
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 20 !important;               /* above header, below drawer */
-    background: rgba(0,0,0,0.4) !important;
-  }
-
-  /* Drawer itself */
-  .md-nav__drawer {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    height: 100% !important;
-    width: 80% !important;
-    max-width: 400px !important;
-    z-index: 30 !important;               /* highest in this stack */
-    background: var(--md-primary-bg-color) !important;
-    box-shadow: var(--shadow-lg) !important;
-    overflow-y: auto !important;
-  }
-
-  /* Drawer content scroll area */
-  .md-nav__drawer .md-sidebar__scrollwrap {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-    background: var(--md-primary-bg-color) !important;
-  }
 }

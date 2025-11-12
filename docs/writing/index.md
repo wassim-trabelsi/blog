@@ -10,8 +10,4 @@ tags:
 
 # Writing
 
-Welcome to my blog!
-
-This section will contain technical posts, insights, and personal stories.
-
-Check back soon for new content.
+### all my posts bellow

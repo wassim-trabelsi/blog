@@ -72,8 +72,8 @@ theme:
   font:
     text: Inter
     code: JetBrains Mono
-  logo: assets/bam_logo.png
-  favicon: assets/images/favicon.png
+  logo: assets/wassim.jpg
+  favicon: assets/favicon.ico
 # Extensions
 markdown_extensions:
   - abbr
