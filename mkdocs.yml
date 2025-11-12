@@ -6,12 +6,11 @@ repo_name: blog
 repo_url: https://github.com/wassim-trabelsi/blog/
 site_url: https://www.wassimt.com/
 edit_uri: edit/main/docs/
-copyright: Copyright &copy; 2025 Wassim Trabelsi 
 theme:
   name: material
   icon:
     repo: fontawesome/brands/github
-    edit: material/pencil 
+    edit: material/pencil
     view: material/eye
     theme:
     admonition:
@@ -91,7 +90,6 @@ markdown_extensions:
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
-  - pymdownx.details
   - pymdownx.emoji:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -104,7 +102,7 @@ markdown_extensions:
   - pymdownx.magiclink:
       normalize_issue_symbols: true
       repo_url_shorthand: true
-      user: wassim-trabelsi 
+      user: wassim-trabelsi
       repo: blog
   - pymdownx.mark
   - pymdownx.smartsymbols
@@ -125,18 +123,16 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-  - pymdownx.arithmatex:
-      generic: true
 nav:
-  - Home: 
-    - Introductions: 'index.md'
-    - Books: 'books.md'
-    - Things: 'things.md'
-  - Production AI: 
-    - "production-ai.md"
+  - Home:
+      - Introductions: "index.md"
+      - Books: "books.md"
+      - Things: "things.md"
+  - Production AI:
+      - "production-ai.md"
   - Math for Fun: "math-for-fun.md"
   - Writing:
-    - "writing/index.md"
+      - "writing/index.md"
 plugins:
   - social
   - search:
