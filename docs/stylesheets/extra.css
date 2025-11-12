@@ -5,29 +5,29 @@
    ================================================ */
 
 /* Import modern fonts */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
   /* Modern tech color palette */
-  --slate-navy: #1E293B;
-  --slate-darker: #0F172A;
+  --slate-navy: #1e293b;
+  --slate-darker: #0f172a;
   --slate-dark: #334155;
   --slate-medium: #475569;
-  --slate-light: #64748B;
-  --sky-blue: #38BDF8;
-  --sky-light: #7DD3FC;
-  --sky-lighter: #BAE6FD;
-  --sky-pale: #E0F2FE;
-  --ice-white: #F8FAFC;
-  --pure-white: #FFFFFF;
-  --text-primary: #0F172A;
+  --slate-light: #64748b;
+  --sky-blue: #38bdf8;
+  --sky-light: #7dd3fc;
+  --sky-lighter: #bae6fd;
+  --sky-pale: #e0f2fe;
+  --ice-white: #f8fafc;
+  --pure-white: #ffffff;
+  --text-primary: #0f172a;
   --text-secondary: #475569;
-  
+
   /* Vibrant accents */
-  --accent-cyan: #06B6D4;
-  --accent-blue: #3B82F6;
-  --accent-indigo: #6366F1;
-  
+  --accent-cyan: #06b6d4;
+  --accent-blue: #3b82f6;
+  --accent-indigo: #6366f1;
+
   /* Shadows - crisp and modern */
   --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
   --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.1);
@@ -42,22 +42,22 @@
   --md-default-fg-color--lighter: var(--slate-light);
   --md-default-bg-color: var(--ice-white);
   --md-code-bg-color: var(--pure-white);
-  
+
   /* Primary colors - slate navy */
   --md-primary-fg-color: var(--slate-navy);
   --md-primary-fg-color--light: var(--slate-medium);
   --md-primary-fg-color--dark: var(--slate-darker);
   --md-primary-bg-color: var(--pure-white);
-  
+
   /* Accent colors - sky blue */
   --md-accent-fg-color: var(--sky-blue);
   --md-accent-fg-color--transparent: rgba(56, 189, 248, 0.1);
   --md-accent-bg-color: var(--sky-pale);
-  
+
   /* Typography colors */
   --md-typeset-a-color: var(--accent-blue);
   --md-typeset-mark-color: rgba(56, 189, 248, 0.25);
-  
+
   /* Code colors */
   --md-code-fg-color: var(--slate-darker);
   --md-code-hl-color: rgba(56, 189, 248, 0.15);
@@ -67,27 +67,27 @@
 
 /* Dark mode - sleek and professional */
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color: #0F172A;
-  --md-default-fg-color: #E2E8F0;
-  --md-default-fg-color--light: #94A3B8;
-  --md-code-bg-color: #1E293B;
-  
+  --md-default-bg-color: #0f172a;
+  --md-default-fg-color: #e2e8f0;
+  --md-default-fg-color--light: #94a3b8;
+  --md-code-bg-color: #1e293b;
+
   /* Primary colors - lighter for dark mode */
   --md-primary-fg-color: #475569;
-  --md-primary-fg-color--light: #64748B;
+  --md-primary-fg-color--light: #64748b;
   --md-primary-fg-color--dark: #334155;
-  --md-primary-bg-color: #1E293B;
-  
+  --md-primary-bg-color: #1e293b;
+
   /* Accent colors - vibrant blue for dark */
-  --md-accent-fg-color: #38BDF8;
+  --md-accent-fg-color: #38bdf8;
   --md-accent-fg-color--transparent: rgba(56, 189, 248, 0.15);
-  
+
   /* Typography */
-  --md-typeset-a-color: #7DD3FC;
+  --md-typeset-a-color: #7dd3fc;
   --md-typeset-mark-color: rgba(56, 189, 248, 0.3);
-  
+
   /* Elevated surfaces */
-  --md-default-bg-color--light: #1E293B;
+  --md-default-bg-color--light: #1e293b;
   --md-default-bg-color--lighter: #334155;
 }
 
@@ -103,7 +103,7 @@
 }
 
 .md-header__title {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   font-size: 0.72rem;
   letter-spacing: -0.01em;
@@ -266,7 +266,7 @@ article.md-content__inner:hover {
 }
 
 .md-typeset h1 {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   font-size: 1.12rem;
   color: var(--md-primary-fg-color--dark);
@@ -288,7 +288,7 @@ article.md-content__inner:hover {
 }
 
 .md-typeset h2 {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 600;
   font-size: 0.88rem;
   color: var(--md-primary-fg-color);
@@ -305,7 +305,7 @@ article.md-content__inner:hover {
 }
 
 .md-typeset h3 {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 600;
   font-size: 0.76rem;
   color: var(--md-primary-fg-color--light);
@@ -318,7 +318,7 @@ article.md-content__inner:hover {
 }
 
 .md-typeset h4 {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 600;
   font-size: 0.72rem;
   color: var(--md-default-fg-color);
@@ -354,7 +354,7 @@ article.md-content__inner:hover {
 }
 
 .md-typeset a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -570,7 +570,11 @@ article.md-content__inner:hover {
 }
 
 .md-nav__link--active {
-  background: linear-gradient(135deg, var(--md-accent-fg-color--transparent), rgba(56, 189, 248, 0.05)) !important;
+  background: linear-gradient(
+    135deg,
+    var(--md-accent-fg-color--transparent),
+    rgba(56, 189, 248, 0.05)
+  ) !important;
   color: var(--sky-blue);
   font-weight: 600;
   border-left: 3px solid var(--sky-blue);
@@ -679,7 +683,7 @@ article.md-content__inner:hover {
 }
 
 .md-typeset .admonition.warning {
-  border-left-color: #F59E0B;
+  border-left-color: #f59e0b;
   background: rgba(245, 158, 11, 0.1);
 }
 
@@ -940,36 +944,108 @@ article.md-content__inner:hover {
    ================================================ */
 
 @media screen and (max-width: 76.1875em) {
+  /* Mobile header - make solid and opaque */
+  .md-header {
+    background: linear-gradient(135deg, var(--slate-darker) 0%, var(--slate-navy) 100%) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+    z-index: 5;
+  }
+
+  /* Mobile drawer sidebar - make solid and clickable */
+  .md-nav__drawer {
+    background: var(--md-primary-bg-color) !important;
+    box-shadow: var(--shadow-lg) !important;
+    z-index: 6 !important;
+  }
+
+  /* Ensure drawer content is solid */
+  .md-nav__drawer .md-sidebar {
+    background: var(--md-primary-bg-color) !important;
+  }
+
+  .md-nav__drawer .md-sidebar__scrollwrap {
+    background: var(--md-primary-bg-color) !important;
+  }
+
+  .md-nav__drawer .md-sidebar__inner {
+    background: var(--md-primary-bg-color) !important;
+  }
+
+  .md-nav__drawer .md-nav {
+    background: var(--md-primary-bg-color) !important;
+  }
+
+  .md-nav__drawer .md-nav__list {
+    background: var(--md-primary-bg-color) !important;
+  }
+
+  /* Dark mode mobile drawer */
+  [data-md-color-scheme="slate"] .md-nav__drawer {
+    background: var(--md-primary-bg-color) !important;
+  }
+
+  [data-md-color-scheme="slate"] .md-nav__drawer .md-sidebar,
+  [data-md-color-scheme="slate"] .md-nav__drawer .md-sidebar__scrollwrap,
+  [data-md-color-scheme="slate"] .md-nav__drawer .md-sidebar__inner,
+  [data-md-color-scheme="slate"] .md-nav__drawer .md-nav,
+  [data-md-color-scheme="slate"] .md-nav__drawer .md-nav__list {
+    background: var(--md-primary-bg-color) !important;
+  }
+
+  /* Ensure drawer overlay is clickable */
+  .md-nav__overlay {
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 5 !important;
+  }
+
   .md-content__inner {
     padding: 0.96rem 1.2rem;
   }
-  
+
   .md-typeset h1 {
     font-size: 1.04rem;
   }
-  
+
   .md-typeset h2 {
     font-size: 0.8rem;
   }
 }
 
 @media screen and (max-width: 44.9375em) {
+  /* Extra small mobile - ensure header is solid */
+  .md-header {
+    background: linear-gradient(135deg, var(--slate-darker) 0%, var(--slate-navy) 100%) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Ensure drawer is solid on small screens */
+  .md-nav__drawer {
+    background: var(--md-primary-bg-color) !important;
+  }
+
+  [data-md-color-scheme="slate"] .md-nav__drawer {
+    background: var(--md-primary-bg-color) !important;
+  }
+
   .md-content__inner {
     padding: 0.8rem;
   }
-  
+
   .md-typeset {
     font-size: 0.64rem;
   }
-  
+
   .md-typeset h1 {
     font-size: 0.96rem;
   }
-  
+
   .md-typeset h2 {
     font-size: 0.76rem;
   }
-  
+
   article.md-content__inner {
     border-radius: 8px;
   }
