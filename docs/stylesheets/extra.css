@@ -1075,22 +1075,66 @@ article.md-content__inner:hover {
   box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
+/* ---------- MOBILE: force proper stacking and remove stacking-context creators ---------- */
 @media screen and (max-width: 76.1875em) {
+  /* 1) Make header sit below the drawer and remove filters/transforms on it */
   .md-header {
-    position: relative;
-    z-index: 1001 !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;            /* lower than drawer */
+    filter: none !important;             /* remove transform/filter stacking contexts */
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: none !important;
+    will-change: auto !important;
   }
 
-  .md-nav__overlay {
-    z-index: 1000 !important;
-  }
-
+  /* 2) Make drawer absolutely fixed to the viewport and above everything */
   .md-nav__drawer {
     position: fixed !important;
-    top: 0;
-    left: 0;
-    width: 80%;
-    height: 100%;
-    z-index: 1002 !important;
+    inset: 0 0 0 0 !important;            /* fill viewport so it overlays header cleanly */
+    width: 80% !important;                /* keep desired width */
+    max-width: 100% !important;
+    height: 100% !important;
+    z-index: 12000 !important;            /* very high — above header and any other stacking context */
+    transform: none !important;
+    filter: none !important;
+    -webkit-transform: none !important;
+    -webkit-filter: none !important;
+    will-change: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    background: var(--md-primary-bg-color) !important; /* be opaque */
+    box-shadow: var(--shadow-lg) !important;
+  }
+
+  /* 3) Ensure the drawer *contents* are also above */
+  .md-nav__drawer *,
+  .md-nav__drawer .md-sidebar,
+  .md-nav__drawer .md-sidebar__inner,
+  .md-nav__drawer .md-sidebar__scrollwrap {
+    z-index: 12001 !important;
+    position: relative !important; /* avoid nested absolute positioning causing surprises */
+    transform: none !important;
+    filter: none !important;
+  }
+
+  /* 4) Overlay sits under the drawer but above the page */
+  .md-nav__overlay {
+    position: fixed !important;
+    inset: 0 0 0 0 !important;
+    z-index: 11999 !important;
+    background: rgba(0,0,0,0.45) !important;
+    pointer-events: auto !important;
+  }
+
+  /* 5) If header has a child that itself creates a stacking context (logo, tabs), lower them */
+  .md-header * {
+    z-index: inherit !important;
+    transform: none !important;
+    filter: none !important;
+    position: relative !important;
   }
 }
