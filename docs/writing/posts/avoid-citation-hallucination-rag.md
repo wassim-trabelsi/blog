@@ -18,21 +18,34 @@ description: Two simple tricks to prevent LLMs from hallucinating document citat
 
 # Stop Citation Hallucination with Better Document Identifiers
 
-When building RAG applications, you often pass multiple document chunks to an LLM and ask which documents it used to generate an answer. The standard approach is assigning numbers to each document and asking the LLM to cite the index. This breaks more often than you'd think.
+When building a RAG, it’s common practice to feed multiple document chunks to the generator and ask it to cite which documents were used to generate an answer. The standard approach is to assign incremental numbers to each document and ask the LLM to cite the indices it used to formulate its answer. **This breaks more often than you’d think**
 
-<!-- more -->
 
-## The Problem with Numbered Citations
+## Problem setup
 
-Most developers start with something like this:
+Consider a RAG system that processes a set of documents as input, where the documents originate from sources you don’t directly manage or control.
 
+```python
+documents = [
+  {
+    "content": "In software engineering, unit tests help ensure code reliability [1].\nDevelopers often integrate them into CI/CD pipelines [2]."
+  },
+  {
+    "content": "Python is widely used for machine learning and data analysis [3].\nLibraries such as NumPy and PyTorch simplify tensor operations [4]."
+  },
+  {
+    "content": "Version control systems (e.g., Git) enable collaboration among developers [5].\nBranching strategies like GitFlow help manage large projects [6]."
+  },
+  {
+    "content": "APIs allow different software components to communicate [7].\nREST and GraphQL are two common architectural styles [8]."
+  }
+]
 ```
-DOC 1: "Paris is the capital of France /n Rome is the capital of Italy /n
-DOC 2: Wassim likes doing math
-DOC 3: Machine learning requires data
-```
 
-Then they ask the LLM to cite which document number it used. The problem? **Numbers have an incremental property that invites hallucination.**
+These documents are stored and processed by the system for retrieval and grounding during question answering.
+
+
+Then they ask the LLM to cite which document number it used. The problem? **Numbers are way broadly used in documents and have an incremental property that invites hallucination.**
 
 When your documents contain messy separators or unclear boundaries, the LLM might hallucinate the next number in sequence. It sees DOC 1, DOC 2, DOC 3... and confidently invents DOC 4 or DOC 5 that never existed. **Your entire citation validation pipeline collapses**
 
