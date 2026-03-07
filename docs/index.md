@@ -1,54 +1,74 @@
 ---
-description: Personal blog and technical notes from Wassim Trabelsi - ML Engineer
+description: Start here curated resources on production AI, RAG systems, and LLM optimization
 ---
 
-# Welcome
+# Start Here
 
-:wave: Wassim here, i'm a passionate ML Engineer specialized in optimizing LLM applications.
+I'm Wassim, ML Engineer at [iAdvize](https://www.iadvize.com/) in Paris. I build LLM & RAG systems at production scale evaluation, observability, retrieval, agentic architectures. This page is a curated entry point into my work and the resources I find most valuable.
 
-## What I Do
+---
 
-I work at [Iadvize](https://www.iadvize.com/) Paris on **LLM & RAG systems at production scale**. My work includes, building **evaluation**, **observability**, optimizing **retrieval**, and developing the use of **agentic** systems.
+## Key Themes in My Work
 
-Through all the improvements in my company, we've achieved and measured 20%+ performance gains through a consistant & scientific methodology.
+### RAG Systems
 
-At [Iadvize](https://www.iadvize.com/) we are building ai assistants for e-commerce handling _100K+_ conversations per day, connecting _1M+_ users with _10M+_ products.
+- [A Small Trick to Avoid Citation Hallucination](writing/posts/avoid-citation-hallucination-rag.md) Why incremental document IDs invite hallucination, and how to fix it
 
-## Experience Highlights
+### LLM Optimization & Evaluation
 
-- **5 years** delivering production Data/ML solutions.
-- Built RAG systems at scale
-- Migrated AI workflows to agentic architectures, improving quality and generalisation.
-- **Kaggle Silver Medal** (Top 5%) in NFL Helmets Detection competition
+*Posts coming soon topics I'm actively writing about: prompt engineering patterns, evaluation frameworks, cost optimization at scale.*
 
-## What You'll Find Here
+### Engineering Philosophy
 
-I share practical lessons from building production AI systems. The kind of insights that save you hours of debugging and help you ship better models faster.
+- [Why You Should Avoid AI Frameworks](writing/posts/why-avoid-ai-frameworks.md) They abstract the wrong layer. Own your context, own your prompts.
 
-**Topics I write about:**
+### Agentic Systems
 
-- **RAG Systems** - Real-world patterns that actually work at scale
-- **LLM Optimization** - Tricks to improve quality without breaking the bank
-- **Evaluation & Observability** - How to measure what matters
-- **Vector Search** - Beyond the basics of embeddings and retrieval
-- **Agentic Systems** - When to use them (and when not to)
-- **Math** - My passion, where i build my intuition about stuffs
+*Posts coming soon migrating from static pipelines to agentic architectures, when agents help and when they don't.*
 
-No fluff, just things I wish I knew earlier.
+---
 
-## Why ?
+## Must-Read External Resources
 
-Writing helps me think clearly and solidify what I've learned. It's primarily for myself, but if it helps others along the way, that's even better.
+Resources I keep coming back to and recommend to anyone working on production AI.
 
-## Education
+**Guides & Reference**
 
-**CentraleSupelec** - Master in Computer Science with major in Applied Mathematics, Data Science and AI
+- [What We Learned from a Year of Building with LLMs](https://www.oreilly.com/radar/what-we-learned-from-a-year-of-building-with-llms/) Eugene Yan et al. Practical lessons from shipping LLM products
+- [Applied LLMs](https://applied-llms.org/) Community-driven resource on building with LLMs
+- [Anthropic's Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) Best practices for prompting
+- [LMSYS Chatbot Arena](https://chat.lmsys.org/) Live LLM benchmarking by human preference
 
-**Lycée Louis Le Grand** - Elite preparation to engineer entrance exams. Focused on maths & physics.
+**Papers**
+
+- [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401) The original RAG paper (Lewis et al.)
+- [Lost in the Middle](https://arxiv.org/abs/2307.03172) How LLMs struggle with long contexts
+- [Chain-of-Thought Prompting](https://arxiv.org/abs/2201.11903) Wei et al., foundational prompting technique
+
+**Tools**
+
+- [LangSmith](https://smith.langchain.com/) LLM observability and evaluation
+- [Ragas](https://docs.ragas.io/) RAG evaluation framework
+- [vLLM](https://docs.vllm.ai/) High-performance LLM serving
+
+---
+
+## Projects & Competitions
+
+- **Kaggle NFL Helmets Detection** Silver Medal (Top 5%). Computer vision competition detecting helmets in NFL footage
+- **This blog** Built with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), deployed on GitHub Pages. [Source code](https://github.com/wassim-trabelsi/blog/)
+
+---
+
+## Math
+
+My personal passion. I use math to build intuition about how things work from probability theory to optimization. See [Math for Fun](math-for-fun/index.md).
+
+---
 
 ## Get in Touch
 
-[:material-email: Email](mailto:wassim.trabelsi.perso@outlook.com){ .md-button .md-button--primary }
-[:material-linkedin: LinkedIn](https://www.linkedin.com/in/wassim-trabelsi-3490aa11a){ .md-button }
-[:material-github: GitHub](https://github.com/wassim-trabelsi){ .md-button }
-[:material-chart-box: Kaggle](https://www.kaggle.com/what5up){ .md-button }
+[:material-email: Email](mailto:wassim.trabelsi.perso@outlook.com) ·
+[:material-linkedin: LinkedIn](https://www.linkedin.com/in/wassim-trabelsi-3490aa11a) ·
+[:material-github: GitHub](https://github.com/wassim-trabelsi) ·
+[:material-chart-box: Kaggle](https://www.kaggle.com/what5up)

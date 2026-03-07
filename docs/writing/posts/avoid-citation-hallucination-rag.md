@@ -1,7 +1,7 @@
 ---
 date: 2025-11-10
 authors:
-  - wassim-trablesi
+  - wassim-trabelsi
 categories:
   - RAG
   - LLM
@@ -13,127 +13,225 @@ tags:
   - debugging
   - production-tips
 comments: true
-description: Two simple tricks to prevent LLMs from hallucinating document citations in your RAG pipeline
+description: Why sequential document IDs break citation validation and how to fix it
 ---
 
-# Stop Citation Hallucination with Better Document Identifiers
+# Stop Citation Hallucination in RAG
 
-When building a RAG, it’s common practice to feed multiple document chunks to the generator and ask it to cite which documents were used to generate an answer. The standard approach is to assign incremental numbers to each document and ask the LLM to cite the indices it used to formulate its answer. **This breaks more often than you’d think**
+Your RAG system asks the LLM to cite sources. You use DOC 1, DOC 2, DOC 3. The LLM confidently cites DOC 4 which doesn't exist.
 
+This is not a model bug. It's a prompt design bug, and it compounds fast when you build pipelines on top.
 
-## Problem setup
+## The Problem
 
-Consider a RAG system that processes a set of documents as input, where the documents originate from sources you don’t directly manage or control.
+**Bad: Sequential numbers**
 
-```python
-documents = [
-  {
-    "content": "In software engineering, unit tests help ensure code reliability [1].\nDevelopers often integrate them into CI/CD pipelines [2]."
-  },
-  {
-    "content": "Python is widely used for machine learning and data analysis [3].\nLibraries such as NumPy and PyTorch simplify tensor operations [4]."
-  },
-  {
-    "content": "Version control systems (e.g., Git) enable collaboration among developers [5].\nBranching strategies like GitFlow help manage large projects [6]."
-  },
-  {
-    "content": "APIs allow different software components to communicate [7].\nREST and GraphQL are two common architectural styles [8]."
-  }
-]
+```
+DOC 1: Paris is the capital of France
+DOC 2: Python is used for ML
+DOC 3: Git enables collaboration
 ```
 
-These documents are stored and processed by the system for retrieval and grounding during question answering.
+The LLM sees `1, 2, 3` and autocompletes the sequence. It hallucinates `DOC 4`, `DOC 5` because that's what autoregressive models do: they predict the next likely token.
 
-
-Then they ask the LLM to cite which document number it used. The problem? **Numbers are way broadly used in documents and have an incremental property that invites hallucination.**
-
-When your documents contain messy separators or unclear boundaries, the LLM might hallucinate the next number in sequence. It sees DOC 1, DOC 2, DOC 3... and confidently invents DOC 4 or DOC 5 that never existed. **Your entire citation validation pipeline collapses**
-
-I've debugged production systems where this caused cascading failures. In one case, a log analysis tool identified which log contained an issue, but the logs themselves contained the same separators used between documents. The LLM couldn't distinguish document boundaries from content, citations fell apart, and nobody trusted the system.
-
-## Two Magic Tricks
-
-### Trick 1: Use Random Letter Sequences (Cleaner Solution)
-
-Replace numerical indexes with random 3-4 letter sequences:
+**Good: Random letter IDs**
 
 ```
 DOC [XKJM]: Paris is the capital of France
-DOC [PLQW]: Wassim likes doing math
-DOC [BNRT]: Machine learning requires data
+DOC [PLQW]: Python is used for ML
+DOC [BNRT]: Git enables collaboration
 ```
 
-Random letter sequences don't follow predictable patterns. And you are very unlikely to find them occur inside the documents themselves. The LLM can't hallucinate "the next one" because there's no obvious sequence. Three or four letters provide enough uniqueness to identify documents without ambiguity.
+No pattern to continue. The LLM can't invent `DOC [????]` because there's no sequence to predict. It's forced to either cite an existing ID or cite nothing.
 
-### Trick 2: Use Mega Separators (Quick Debug)
+## The Boundary Problem (The Real Mess)
 
-When debugging citation issues, use overkill separators like 20 newlines between documents:
+Sequential IDs are only half the problem. The other half is **document boundary confusion**.
 
-```python
-separator = "\n" * 20
-documents = separator.join([f"DOC {id}: {content}" for id, content in doc_list])
-```
-
-Yes, this costs ~20 extra tokens per document. But it's worth it to avoid mixing:
+Consider a real e-commerce RAG system. You retrieve product pages, FAQ entries, and support tickets. You separate them with `\n`. Sounds fine, until you look at what's actually inside the documents:
 
 ```
-DOC 1 Paris is the capital of France
+DOC 1: Nike Air Max 90
+Available sizes: 40, 41, 42, 43
+Colors: White, Black
 
-Paris is the capital of France
+Customer reviews:
+"Great shoe, very comfortable" - Jean P.
+"Runs small, order one size up" - Marie L.
+
+Return policy: 30 days, unworn condition
+DOC 2: Adidas Ultraboost 22
+Lightweight running shoe with Boost midsole.
+Available sizes: 39, 40, 41, 42
+
+Free shipping on orders over 50EUR.
+DOC 3: FAQ - How to return an item?
+Step 1: Log into your account
+Step 2: Go to "My Orders"
+Step 3: Click "Return"
+
+Note: Items must be in original packaging.
+Refund processed within 5-7 business days.
 ```
 
-with:
+See the problem? Each document contains its own `\n` separators. The LLM has no way to know where `DOC 1` ends and `DOC 2` begins. The customer review, the empty lines, the multi-line FAQ steps they all look like document boundaries.
+
+Now the LLM might cite "DOC 1" when referring to the return policy, which was actually the tail end of DOC 1 bleeding into DOC 2. Or it merges content from two documents and attributes it to one. You can't tell the difference between a correct citation and a broken one because the boundaries themselves are ambiguous.
+
+## Why This Kills Your AgentOps Pipeline
+
+If you're building a full agentic pipeline this becomes catastrophic, fast.
+
+**Consider a typical agent flow:**
 
 ```
-DOC 2 Wassim likes doing math
+User question
+    -> Retrieval (fetch docs)
+        -> LLM reasoning (cite sources)
+            -> Citation validator (check IDs exist)
+                -> Response formatter (build answer with references)
+                    -> Feedback loop (user clicks citation -> sees source)
 ```
 
-Don't worry about token consumption during debugging. You're paying a tiny amount to prevent your system from failing completely.
+When the LLM hallucinates `DOC 4`:
 
-## Real Example: Log Analysis Failure
+- Your **citation validator** passes because `4` looks like a valid integer, and you might have 4+ docs in your index. You'd need to check against the *exact set retrieved for this query*, not just "does this ID exist somewhere."
+- Your **response formatter** links to the wrong document, or crashes on a missing reference.
+- Your **feedback loop** shows the user a source that doesn't support the answer. Trust destroyed.
+- Your **observability** logs show a "successful" pipeline run with green checkmarks everywhere. The hallucination is invisible in your metrics.
 
-I debugged a production application that identified which log entries contained issues. The system used single newlines (`\n`) to separate log documents. But logs themselves contain multiple newlines internally. The LLM couldn't determine where one log ended and the next began, so it hallucinated log references.
+Now scale this. 100K conversations per day. How many silent citation errors are you shipping? You don't know, because sequential IDs make hallucination *look* valid.
 
-Fix? Switch to mega separators during debugging, then use random letter IDs in production. System started working immediately.
+With random IDs like `[XKJM]`, a hallucinated citation is immediately detectable: the string either exists in your retrieved set or it doesn't. No ambiguity, no edge cases. Your validator becomes a simple set lookup.
 
-## Implementation Pattern
+## Two Fixes
 
-Here's a practical pattern:
+**1. Random letter IDs**
+
+Use 3-4 random uppercase letters instead of numbers. No sequence to predict. Validation is a trivial set membership check.
+
+**2. Mega separators**
+
+Use 20 newlines between documents. This sounds absurd, but it works. The massive whitespace gap creates an unambiguous visual boundary that the LLM can't confuse with in-document formatting.
+
+**Combined, the same example becomes clean:**
+
+```
+DOC [XKJM]: Nike Air Max 90
+Available sizes: 40, 41, 42, 43
+Colors: White, Black
+
+Customer reviews:
+"Great shoe, very comfortable" - Jean P.
+"Runs small, order one size up" - Marie L.
+
+Return policy: 30 days, unworn condition
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DOC [PLQW]: Adidas Ultraboost 22
+Lightweight running shoe with Boost midsole.
+Available sizes: 39, 40, 41, 42
+
+Free shipping on orders over 50EUR.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DOC [BNRT]: FAQ - How to return an item?
+Step 1: Log into your account
+Step 2: Go to "My Orders"
+Step 3: Click "Return"
+
+Note: Items must be in original packaging.
+Refund processed within 5-7 business days.
+```
+
+Now the LLM can't confuse an in-document newline with a document boundary. And it can't hallucinate a citation because there's no pattern to extend.
+
+## Implementation
 
 ```python
 import random
 import string
+import re
 
-def generate_doc_id(length=4):
+
+def generate_doc_id(length: int = 4) -> str:
+    """Generate a random uppercase letter ID."""
     return ''.join(random.choices(string.ascii_uppercase, k=length))
 
-def prepare_documents_for_llm(documents):
-    doc_ids = [generate_doc_id() for _ in documents]
+
+def format_docs_for_prompt(docs: list[str]) -> tuple[str, dict[str, str]]:
+    """Format documents with random IDs and mega separators.
+
+    Returns the formatted string and a mapping of ID -> document
+    for downstream validation.
+    """
     separator = "\n" * 20
+    id_to_doc = {}
+    formatted_parts = []
 
-    formatted = []
-    for doc_id, content in zip(doc_ids, documents):
-        formatted.append(f"DOC {doc_id}:\n{content}")
+    for doc in docs:
+        doc_id = generate_doc_id()
+        id_to_doc[doc_id] = doc
+        formatted_parts.append(f"DOC [{doc_id}]: {doc}")
 
-    return separator.join(formatted), doc_ids
+    return separator.join(formatted_parts), id_to_doc
+
+
+def validate_citations(response: str, valid_ids: set[str]) -> list[str]:
+    """Extract cited IDs from response and flag any hallucinated ones."""
+    cited = set(re.findall(r'\[([A-Z]{4})\]', response))
+    hallucinated = cited - valid_ids
+    return list(hallucinated)
 ```
 
-Your citation validation becomes:
-
-```python
-def validate_citation(cited_id, valid_ids):
-    return cited_id in valid_ids  # No more off-by-one hallucinations
-```
-
-## Takeaway
-
-Citation hallucination in RAG systems often stems from predictable document identifiers and weak separators. Two quick fixes:
-
-1. Use random letter sequences instead of numbers
-2. Use overkill separators when debugging
-
-These simple changes prevent LLMs from hallucinating citations that break your validation pipeline.
+The `id_to_doc` mapping makes your citation validator a one-liner. No fuzzy matching, no "does this number fall in range" logic. The cited ID exists or it doesn't.
 
 ---
 
-Have other RAG debugging tricks? Leave a comment below or [reach out on LinkedIn](https://www.linkedin.com/in/wassim-trabelsi-3490aa11a).
+## The Bigger Picture
+
+This is why, as an AI Engineer, you need full control over your context. The prompt is where your bugs live. Citation hallucination, boundary confusion, token waste these are all context management problems.
+
+AI frameworks abstract exactly this layer away from you. They build the prompt, format the documents, assemble the context and you can't see or control what's happening. As Hamel Husain puts it: [Fuck You, Show Me The Prompt](https://hamel.dev/blog/posts/prompt/).
+
+If you want to go deeper on why this matters at scale, read my next post: [Why You Should Avoid AI Frameworks](why-avoid-ai-frameworks.md). They abstract the wrong things.
+
+---
+
+Have other RAG debugging tricks? [Reach out on LinkedIn](https://www.linkedin.com/in/wassim-trabelsi-3490aa11a).

@@ -1,4 +1,4 @@
-site_name: Wassim Trabelsi
+site_name: wassimtrabelsi
 site_author: Wassim Trabelsi
 site_description: >-
   Personal blog and technical notes.
@@ -53,26 +53,23 @@ theme:
     - search.suggest
     - toc.follow
   palette:
-    # Light mode - warm and inviting
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: custom
-      accent: custom
+      primary: white
+      accent: blue
       toggle:
-        icon: material/weather-sunny
+        icon: material/brightness-7
         name: Switch to dark mode
-    # Dark mode - cozy and comfortable
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: custom
-      accent: custom
+      accent: blue
       toggle:
-        icon: material/weather-night
+        icon: material/brightness-4
         name: Switch to light mode
   font:
     text: Inter
-    code: JetBrains Mono
-  logo: assets/wassim.jpg
+    code: IBM Plex Mono
   favicon: assets/favicon.ico
 # Extensions
 markdown_extensions:
@@ -84,7 +81,7 @@ markdown_extensions:
   - footnotes
   - md_in_html
   - toc:
-      permalink: true
+      permalink: "🔗"
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
@@ -124,15 +121,17 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 nav:
-  - Home:
-      - Introductions: "index.md"
+  - Start Here: "index.md"
+  - Writing:
+      - "writing/index.md"
+  - About:
+      - Introductions: "about.md"
       - Books: "books.md"
       - Things: "things.md"
   - Production AI:
       - "production-ai.md"
-  - Math for Fun: "math-for-fun.md"
-  - Writing:
-      - "writing/index.md"
+  - Math for Fun:
+      - "math-for-fun/index.md"
 plugins:
   - social
   - search:
@@ -150,6 +149,13 @@ plugins:
       blog_dir: writing
       blog_toc: true
       post_dir: writing/posts
+      post_date_format: dd/MM/yyyy
+      post_url_format: "{slug}-{date}"
+      authors_file: "{blog}/.authors.yml"
+  - blog:
+      blog_dir: math-for-fun
+      blog_toc: true
+      post_dir: math-for-fun/posts
       post_date_format: dd/MM/yyyy
       post_url_format: "{slug}-{date}"
       authors_file: "{blog}/.authors.yml"

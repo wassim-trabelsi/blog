@@ -12,4 +12,8 @@ Practical tips learned from building production AI systems at scale.
 
 **Key takeaway:** incremental document IDs invite hallucination. In this blog, i share how i deal against that.
 
+### [Why You Should Avoid AI Frameworks](writing/posts/why-avoid-ai-frameworks.md)
+
+**Key takeaway:** AI frameworks abstract the wrong layer. The prompt is where your bugs live, and frameworks hide it from you.
+
 ---
