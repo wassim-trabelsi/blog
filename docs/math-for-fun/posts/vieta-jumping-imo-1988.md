@@ -8,14 +8,14 @@ categories:
 tags:
   - vieta-jumping
   - imo
-  - infinite-descent
+  - minimal-counterexample
 comments: true
 description: Vieta Jumping  the most elegant proof in the history of the International Mathematical Olympiad. IMO 1988, Problem 6.
 ---
 
 # Vieta Jumping  The Most Beautiful Proof in Olympiad History (IMO 1988, Problem 6)
 
-In 1988, at the International Mathematical Olympiad (IMO) in Canberra, Australia, **Problem 6** brought the world's best young mathematicians to their knees. Proposed by Stephan Beck (West Germany), this problem was considered so difficult that even the jury members struggled to solve it. Only **11 out of 268 participants** achieved a perfect score  among them, a 17-year-old prodigy named **Terence Tao**, future Fields Medalist.
+In 1988, at the International Mathematical Olympiad (IMO) in Canberra, Australia, **Problem 6** brought the world's best young mathematicians to their knees. Proposed by Stephan Beck (West Germany), this problem was considered so difficult that even the jury members struggled to solve it. Only **11 out of 268 participants** achieved a perfect score  among them, **Nicușor Dan** (Romania), now President of Romania.
 
 The method behind the solution? **Vieta Jumping**, a technique as surprising as it is elegant.
 
@@ -54,10 +54,9 @@ Expanding the product gives:
 
 $$(x - x_1)(x - x_2) = x^2 - (x_1 + x_2)x + x_1x_2$$
 
-Comparing coefficients with :
+Comparing coefficients we got :
 
-$$x_1 + x_2 = S$$
-$$x_1 x_2 = P$$
+$x_1 + x_2 = S$ and $x_1 x_2 = P$
 
 
 ???+ example "Quick example"
@@ -74,8 +73,9 @@ That's all we'll need. Let's move on to the proof.
 
 ### Step 1  Setup
 
-Let $a_1$ and $b_1$ as the problem statement (by symmetry we assume $a_1 >= b_1$)
-We have $k$ a positive integer such that:
+Suppose for contradiction that $k$ is not a perfect square. Among all pairs $(a, b)$ of positive integers with $\dfrac{a^2 + b^2}{ab + 1} = k$, choose $(a_1, b_1)$ such that $a_1 + b_1$ is **minimal** (with $a_1 \geq b_1$ by symmetry).
+
+We have:
 
 $$\frac{a_1^2 + b_1^2}{a_1b_1 + 1} = k$$
 
@@ -117,53 +117,23 @@ $a_2 = kb_1 - a_1$, and $k$, $b_1$, $a_1$ are all integers. ✓
 
 **$a_2$ is nonzero:**
 
-$a_2 = \dfrac{b_1^2 - k}{a_1}$. If $a_2 = 0$, then $k = b_1^2$, making $k$ a perfect square. But we assumed otherwise. So $a_2 \neq 0$. ✓
+$a_2 = \dfrac{b_1^2 - k}{a_1}$. If $a_2 = 0$, then $k = b_1^2$, making $k$ a perfect square, contradicting our assumption. So $a_2 \neq 0$. ✓
 
 **$a_2$ is positive:**
 
-Suppose for contradiction that $a_2 < 0$. Then $-a_2 > 0$, and since $k \geq 1$ and $b_1 \geq 1$:
+Since $a_2$ is a root, we have $\dfrac{a_2^2 + b_1^2}{a_2 b_1 + 1} = k$. The numerator $a_2^2 + b_1^2 > 0$, and $k > 0$, so the denominator $a_2 b_1 + 1 > 0$, which requires $a_2 > 0$ (since $b_1 \geq 1$). ✓
 
-$$\underbrace{a_2^2}_{> 0} + \underbrace{(-a_2) \cdot k \cdot b_1}_{> 0} + b_1^2 - k = 0$$
+### Step 5  The contradiction
 
-$$\implies a_2^2 + kb_1|a_2| + b_1^2 = k$$
-
-But the left side is at least $a_2^2 + b_1^2 \geq 1 + 1 = 2$ (since $a_2 \neq 0$ and $b_1 \geq 1$), plus a positive term $kb_1|a_2| \geq 1$. So the left side is $\geq 3$, yet it should equal $k$.
-
-Meanwhile, from the equation $a_2^2 + b_1^2 = k(a_2 b_1 + 1)$ with $a_2 < 0$, the right side $k(a_2 b_1 + 1)$ can become very small or even negative, leading to a **contradiction** since the left side $a_2^2 + b_1^2$ is always strictly positive.
-
-Therefore $a_2 > 0$. ✓
-
-### Step 5  The jump that changes everything
-
-We've shown that $(a_2, b_1) \in S_k$. Now observe the crucial inequality:
+We've shown that $(a_2, b_1)$ is also a solution with $k = \dfrac{a_2^2 + b_1^2}{a_2 b_1 + 1}$ and $a_2 \in \mathbb{N}^*$. Now observe:
 
 $$a_2 = \frac{b_1^2 - k}{a_1} < \frac{b_1^2}{a_1} \leq \frac{a_1^2}{a_1} = a_1$$
 
-Therefore:
+Therefore $a_2 < a_1$, which means:
 
-$$\boxed{a_2 < a_1}$$
+$$a_2 + b_1 < a_1 + b_1$$
 
-**This is the Vieta Jump!** We've "jumped" to a strictly smaller solution.
-
-### Step 6  Infinite descent
-
-By repeating the process:
-
-- From $(a_1, b_1) \in S_k$, we construct $(a_2, b_1) with $a_2 < a_1$
-- From $(a_2, b_1) \in S_k$, we construct $(a_2, b_2) \in S_k$ with $a_3 < a_2$
-- From $(a_3, b_1) \in S_k$, we construct $(a_4, b_1) \in S_k$ with $a_4 < a_3$
-- And so on...
-
-We obtain a **strictly decreasing** sequence of positive integers:
-
-$$a_1 > a_2 > a_3 > a_4 > \cdots > 0$$
-
-**But this is impossible!** A strictly decreasing sequence of positive integers must be **finite**. You cannot descend forever in $\mathbb{N}^*$.
-
-!!! example "Illustration"
-    Imagine the sequence $10, 8, 5, 2, 1, \ldots$  after $1$, there is no smaller positive integer. We're stuck.
-
-This contradiction proves that our initial assumption was false.
+But $(a_2, b_1)$ is a solution where $k$ is still not a perfect square, with a **strictly smaller** sum. This contradicts the **minimality** of $a_1 + b_1$.
 
 $$\boxed{k \text{ is a perfect square.} \quad \blacksquare}$$
 
@@ -177,11 +147,11 @@ This problem is often cited as **the most beautiful problem in Olympiad history*
 
 2. **The difficulty is extreme.** Despite the simplicity of the statement, it defeated 95% of the world's best young mathematicians.
 
-3. **The tools are elementary.** The proof uses only Vieta's formulas (high school curriculum!) and the principle of infinite descent.
+3. **The tools are elementary.** The proof uses only Vieta's formulas (high school curriculum!) and a minimality argument.
 
 4. **The idea is deeply creative.** The stroke of genius is to *fix $b$* and view the equation as a polynomial in $a$, then use the second root to "jump" to a smaller solution. It is an act of pure mathematical creation.
 
-5. **Infinite descent.** This method, popularized by **Fermat**, transforms a seemingly static problem into a dynamic argument. We don't prove directly that $k$ is a square  we show that assuming otherwise creates a process that cannot terminate, which is absurd.
+5. **Minimality argument.** We don't prove directly that $k$ is a square  we assume a minimal counterexample exists, then construct a strictly smaller one, which is a contradiction.
 
 ---
 
@@ -193,7 +163,8 @@ This problem has a fascinating story within the IMO:
 - During problem selection, **no jury member** managed to solve it within the allotted time
 - It was still selected as Problem 6 (traditionally the hardest)
 - Out of 268 participants, only **11** achieved the maximum score of 7 points
-- Among them: **Terence Tao** (gold medal at age 13 in 1988, Fields Medal in 2006) and **Emanouil Atanassov** (Bulgaria), who reportedly proposed a near one-line solution
+- Among them: **Nicușor Dan** (Romania, now President of Romania) and **Emanouil Atanassov** (Bulgaria), who reportedly proposed a near one-line solution
+- **Terence Tao** (Australia), then 13 years old, won a gold medal at this IMO but did not fully solve Problem 6
 
 Vieta Jumping has since become a **classic technique** in olympiad number theory, reused in countless competition problems worldwide.
 
@@ -201,11 +172,9 @@ Vieta Jumping has since become a **classic technique** in olympiad number theory
 
 ## Going Further
 
-If this type of reasoning fascinates you, here are some leads:
+If this type of reasoning fascinates you:
 
-- **Fermat's infinite descent**: the same idea applied to other number theory problems
-- **The International Mathematical Olympiad**: an extraordinary playground for curious minds
-- **Art and Craft of Problem Solving** by Paul Zeitz: an excellent book for developing mathematical intuition
+- **Harvey Cohn, [Advanced Number Theory](https://cdn.preterhuman.net/texts/math/Advanced%20Number%20Theory.pdf)** (read the introduction): explores how symmetric quadratic equations can be generated by a few solutions and elegant jumps  a generalisation of the idea behind Vieta Jumping.
 
 ---
 
