@@ -121,17 +121,17 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 nav:
-  - Start Here: "index.md"
+  - Welcome: "index.md"
   - Writing:
       - "writing/index.md"
-  - About:
-      - Introductions: "about.md"
-      - Books: "books.md"
-      - Things: "things.md"
   - Production AI:
       - "production-ai.md"
   - Math for Fun:
       - "math-for-fun/index.md"
+  - About:
+      - Introductions: "about.md"
+      - Books: "books.md"
+      - Things: "things.md"
 plugins:
   - social
   - search:

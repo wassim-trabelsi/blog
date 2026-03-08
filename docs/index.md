@@ -2,7 +2,7 @@
 description: Start here curated resources on production AI, RAG systems, and LLM optimization
 ---
 
-# Start Here
+# Welcome
 
 I'm Wassim, ML Engineer at [iAdvize](https://www.iadvize.com/) in Paris. I build LLM & RAG systems at production scale evaluation, observability, retrieval, agentic architectures. This page is a curated entry point into my work and the resources I find most valuable.
 
@@ -12,19 +12,21 @@ I'm Wassim, ML Engineer at [iAdvize](https://www.iadvize.com/) in Paris. I build
 
 ### RAG Systems
 
-- [A Small Trick to Avoid Citation Hallucination](writing/posts/avoid-citation-hallucination-rag.md) Why incremental document IDs invite hallucination, and how to fix it
+- **[Avoid Citation Hallucination](writing/posts/avoid-citation-hallucination-rag.md) -**<br>
+    <small>Why incremental document IDs invite hallucination, and how to fix it</small>
 
 ### LLM Optimization & Evaluation
 
-*Posts coming soon topics I'm actively writing about: prompt engineering patterns, evaluation frameworks, cost optimization at scale.*
+*Posts coming soon.*
 
 ### Engineering Philosophy
 
-- [Why You Should Avoid AI Frameworks](writing/posts/why-avoid-ai-frameworks.md) They abstract the wrong layer. Own your context, own your prompts.
+- **[You Should Avoid AI Frameworks](writing/posts/why-avoid-ai-frameworks.md) -**<br>
+    <small>They abstract the wrong layer. Own your context, own your prompts.</small>
 
 ### Agentic Systems
 
-*Posts coming soon migrating from static pipelines to agentic architectures, when agents help and when they don't.*
+*Posts coming soon.*
 
 ---
 
@@ -34,22 +36,32 @@ Resources I keep coming back to and recommend to anyone working on production AI
 
 **Guides & Reference**
 
-- [What We Learned from a Year of Building with LLMs](https://www.oreilly.com/radar/what-we-learned-from-a-year-of-building-with-llms/) Eugene Yan et al. Practical lessons from shipping LLM products
-- [Applied LLMs](https://applied-llms.org/) Community-driven resource on building with LLMs
-- [Anthropic's Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) Best practices for prompting
-- [LMSYS Chatbot Arena](https://chat.lmsys.org/) Live LLM benchmarking by human preference
+- **[What We Learned from a Year of Building with LLMs](https://www.oreilly.com/radar/what-we-learned-from-a-year-of-building-with-llms/) -**<br>
+    <small>Eugene Yan et al. Practical lessons from shipping LLM products</small>
+- **[Applied LLMs](https://applied-llms.org/) -**<br>
+    <small>Community-driven resource on building with LLMs</small>
+- **[Anthropic's Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) -**<br>
+    <small>Best practices for prompting</small>
+- **[LMSYS Chatbot Arena](https://chat.lmsys.org/) -**<br>
+    <small>Live LLM benchmarking by human preference</small>
 
 **Papers**
 
-- [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401) The original RAG paper (Lewis et al.)
-- [Lost in the Middle](https://arxiv.org/abs/2307.03172) How LLMs struggle with long contexts
-- [Chain-of-Thought Prompting](https://arxiv.org/abs/2201.11903) Wei et al., foundational prompting technique
+- **[Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401) -**<br>
+    <small>The original RAG paper (Lewis et al.)</small>
+- **[Lost in the Middle](https://arxiv.org/abs/2307.03172) -**<br>
+    <small>How LLMs struggle with long contexts</small>
+- **[Chain-of-Thought Prompting](https://arxiv.org/abs/2201.11903) -**<br>
+    <small>Wei et al., foundational prompting technique</small>
 
 **Tools**
 
-- [LangSmith](https://smith.langchain.com/) LLM observability and evaluation
-- [Ragas](https://docs.ragas.io/) RAG evaluation framework
-- [vLLM](https://docs.vllm.ai/) High-performance LLM serving
+- **[LangSmith](https://smith.langchain.com/) -**<br>
+    <small>LLM observability and evaluation</small>
+- **[Ragas](https://docs.ragas.io/) -**<br>
+    <small>RAG evaluation framework</small>
+- **[vLLM](https://docs.vllm.ai/) -**<br>
+    <small>High-performance LLM serving</small>
 
 ---
 
