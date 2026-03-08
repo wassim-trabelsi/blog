@@ -46,6 +46,20 @@ $$\begin{cases} x_1 + x_2 = S \quad \text{(sum of roots)} \\ x_1 \cdot x_2 = P \
 
 In other words, the sum of the roots equals the negated coefficient of $x$ (divided by the leading coefficient), and the product of the roots equals the constant term.
 
+Indeed if we rewrite 
+
+$$x^2 - Sx + P = (x -x_1)(x-x_2) = 0$$
+
+Expanding the product gives:
+
+$$(x - x_1)(x - x_2) = x^2 - (x_1 + x_2)x + x_1x_2$$
+
+Comparing coefficients with :
+
+$$x_1 + x_2 = S$$
+$$x_1 x_2 = P$$
+
+
 ???+ example "Quick example"
     For $x^2 - 5x + 6 = 0$, the roots are $x_1 = 2$ and $x_2 = 3$.
 
@@ -60,44 +74,16 @@ That's all we'll need. Let's move on to the proof.
 
 ### Step 1  Setup
 
-Let $k$ be a positive integer such that:
+Let $a_1$ and $b_1$ as the problem statement (by symmetry we assume $a_1 >= b_1$)
+We have $k$ a positive integer such that:
 
-$$\frac{a^2 + b^2}{ab + 1} = k$$
-
-Why is $k \in \mathbb{N}^*$? Because:
-
-- $k$ is an **integer** (by the divisibility hypothesis)
-- $k$ is **positive** (numerator and denominator are both positive)
-- $k$ is **nonzero** (the numerator $a^2 + b^2 > 0$ since $a, b \geq 1$)
-
-We introduce the set:
-
-$$S_k = \left\{(a, b) \in (\mathbb{N}^*)^2 \;\middle|\; \frac{a^2 + b^2}{ab + 1} = k \right\}$$
-
-???+ example "A concrete example"
-    The pair $(8, 2)$ belongs to $S_4$ because:
-
-    $$\frac{8^2 + 2^2}{8 \times 2 + 1} = \frac{64 + 4}{17} = \frac{68}{17} = 4$$
-
-    And $4 = 2^2$ is indeed a perfect square!
-
-    By symmetry ($a$ and $b$ play symmetric roles), $(2, 8) \in S_4$ as well.
-
-### Step 2  Choosing a solution and proof by contradiction
-
-Pick a pair $(a_1, b_1) \in S_k$ with $a_1 \geq b_1$ (always possible by symmetry).
-
-**Assume for contradiction that $k$ is not a perfect square.**
-
-Since $(a_1, b_1) \in S_k$, we have:
-
-$$a_1^2 + b_1^2 = k(a_1 b_1 + 1)$$
+$$\frac{a_1^2 + b_1^2}{a_1b_1 + 1} = k$$
 
 Rearranging in terms of $a_1$:
 
 $$a_1^2 - k b_1 \cdot a_1 + (b_1^2 - k) = 0$$
 
-### Step 3  The key insight: viewing $a_1$ as a root of a polynomial
+### Step 2 The key insight: viewing $a_1$ as a root of a polynomial
 
 Consider the polynomial in $x$:
 
@@ -113,7 +99,7 @@ From which we deduce:
 
 $$a_2 = kb_1 - a_1 \qquad \text{and} \qquad a_2 = \frac{b_1^2 - k}{a_1}$$
 
-### Step 4  Showing that $(a_2, b_1) \in S_k$
+### Step 3 Showing that $(a_2, b_1)$ is also a solution
 
 Since $a_2$ is also a root of $P(x) = 0$, retracing the algebra:
 
@@ -163,8 +149,8 @@ $$\boxed{a_2 < a_1}$$
 
 By repeating the process:
 
-- From $(a_1, b_1) \in S_k$, we construct $(a_2, b_1) \in S_k$ with $a_2 < a_1$
-- From $(a_2, b_1) \in S_k$, we construct $(a_3, b_1) \in S_k$ with $a_3 < a_2$
+- From $(a_1, b_1) \in S_k$, we construct $(a_2, b_1) with $a_2 < a_1$
+- From $(a_2, b_1) \in S_k$, we construct $(a_2, b_2) \in S_k$ with $a_3 < a_2$
 - From $(a_3, b_1) \in S_k$, we construct $(a_4, b_1) \in S_k$ with $a_4 < a_3$
 - And so on...
 
